@@ -513,17 +513,17 @@ def forward_chaining(gejala_input: list, konteks: Optional[dict] = None) -> list
 class InputDiagnosis(BaseModel):
     gejala: list[str] = Field(
         ...,
-        example=["G01", "G13", "G14"],
+        examples=[["G01", "G13", "G14"]],
         description="List kode gejala. Lihat GET /gejala untuk daftar lengkap."
     )
 
 class InputDiagnosisMotor(BaseModel):
-    make:   str       = Field(..., example="honda",  description="Merek motor: honda / yamaha / suzuki")
-    model:  str       = Field(..., example="vario",  description="Model motor (partial match didukung)")
-    year:   Optional[int] = Field(None, example=2022, description="Tahun motor (opsional)")
+    make:   str       = Field(..., examples=["honda"],  description="Merek motor: honda / yamaha / suzuki")
+    model:  str       = Field(..., examples=["vario"],  description="Model motor (partial match didukung)")
+    year:   Optional[int] = Field(None, examples=[2022], description="Tahun motor (opsional)")
     gejala: list[str] = Field(
         ...,
-        example=["G19", "G22", "G43"],
+        examples=[["G19", "G22", "G43"]],
         description="List kode gejala. Lihat GET /gejala untuk daftar lengkap."
     )
 
@@ -590,8 +590,8 @@ def gejala_per_komponen(komponen: str):
 
 @app.get("/motor/search")
 def search_motor_list(
-    make:  str           = Query(..., description="Merek: honda / yamaha / suzuki", example="honda"),
-    model: str           = Query(..., description="Keyword pencarian model motor", example="beat"),
+    make:  str           = Query(..., description="Merek: honda / yamaha / suzuki", examples=["honda"]),
+    model: str           = Query(..., description="Keyword pencarian model motor", examples=["beat"]),
 ):
     """Cari semua motor yang cocok dari API Ninjas, return sebagai daftar."""
     if make.lower() not in MEREK_DIDUKUNG:
@@ -631,9 +631,9 @@ def search_motor_list(
 
 @app.get("/motor/cari")
 def cari_motor(
-    make:  str           = Query(..., description="Merek: honda / yamaha / suzuki", example="honda"),
-    model: str           = Query(..., description="Model motor", example="vario"),
-    year:  Optional[int] = Query(None, description="Tahun (opsional)", example=2022),
+    make:  str           = Query(..., description="Merek: honda / yamaha / suzuki", examples=["honda"]),
+    model: str           = Query(..., description="Model motor", examples=["vario"]),
+    year:  Optional[int] = Query(None, description="Tahun (opsional)", examples=[2022]),
 ):
     """Ambil spesifikasi motor dari API Ninjas dan kembalikan dalam format bersih."""
     if make.lower() not in MEREK_DIDUKUNG:
