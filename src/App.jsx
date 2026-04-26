@@ -101,7 +101,7 @@ export default function App() {
       </main>
 
       <footer className="w-full max-w-6xl mx-auto px-4 mt-24 border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 pb-12">
-        <p>© 2026 MotorCare AI. Built with FastAPI, React, and TailwindCSS.</p>
+        <p>© 2026 Systems AI. Built with FastAPI, React, and TailwindCSS.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           <a href="#" className="hover:text-slate-800 dark:hover:text-slate-300">Documentation</a>
           <a href="#" className="hover:text-slate-800 dark:hover:text-slate-300">Privacy</a>

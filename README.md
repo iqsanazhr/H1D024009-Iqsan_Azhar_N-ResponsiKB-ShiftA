@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Penjelasan Program: MotorCare AI & AgriFuzzy
+## 🚀 Penjelasan Program: Systems AI (Pakar & Fuzzy)
 
 Program ini adalah platform kecerdasan buatan berbasis web yang mengintegrasikan dua sistem cerdas utama untuk membantu pengguna dalam bidang mekanik kendaraan bermotor dan optimasi pertanian.
 
