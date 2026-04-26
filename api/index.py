@@ -8,6 +8,20 @@ load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 # Import aplikasi FastAPI dari api
 from api.SistemPakar import app as pakar_app
+
+# --- MONKEYPATCH UNTUK PYTHON 3.12 ---
+# scikit-fuzzy masih memanggil "import imp" yang sudah dihapus di Python 3.12.
+# Kita buat modul palsu agar tidak crash.
+import sys
+import types
+if 'imp' not in sys.modules:
+    fake_imp = types.ModuleType('imp')
+    def fake_find_module(name, *args, **kwargs):
+        raise ImportError(name)
+    fake_imp.find_module = fake_find_module
+    sys.modules['imp'] = fake_imp
+# -------------------------------------
+
 from api.Fuzzy import app as fuzzy_app
 
 app = FastAPI(title="Asistensi Unified API untuk Vercel")
