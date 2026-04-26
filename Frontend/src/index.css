@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.animate-blob {
+  animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 10px;
+}
+
+/* Shimmer Light Effect */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmerEffect 3s infinite linear;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.dark .shimmer-card::after {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 80%
+  );
+}
+
+.shimmer-card:hover::after {
+  opacity: 1;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Static Grid Lines Background */
+.static-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.15) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.15) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+.dark .static-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.25) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.25) 1.5px, transparent 1.5px);
+}
+
+/* Glowing Blue-Purple Lights over the Grid */
+.rgb-grid-lights {
+  position: absolute;
+  inset: 0;
+  /* Blue-to-purple spotlight gradients */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.8) 0%, rgba(59, 130, 246, 0.4) 15%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.8) 0%, rgba(79, 70, 229, 0.4) 15%, transparent 35%);
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  animation: gridLightTravel 10s ease-in-out infinite alternate;
+  
+  /* Mask limits the light only to the lines */
+  -webkit-mask-image: 
+    linear-gradient(to right, rgba(0,0,0,1) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0,0,0,1) 2px, transparent 2px);
+  mask-image: 
+    linear-gradient(to right, rgba(0,0,0,1) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0,0,0,1) 2px, transparent 2px);
+  -webkit-mask-size: 40px 40px;
+  mask-size: 40px 40px;
+  
+  opacity: 0.8;
+  z-index: 1;
+  filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.5));
+}
+
+.dark .rgb-grid-lights {
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5));
+}
+
+@keyframes gridLightTravel {
+  0% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%;
+  }
+}
+
+/* Mouse Cursor Grid Light */
+.cursor-grid-light {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(
+      circle 200px at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(99, 102, 241, 1) 0%,      /* indigo-500 (inti) */
+      rgba(139, 92, 246, 0.8) 15%,    /* violet-500 */
+      rgba(59, 130, 246, 0.5) 35%,    /* blue-500 */
+      transparent 100%
+    );
+  
+  /* Mask limits the light only to the lines */
+  -webkit-mask-image: 
+    linear-gradient(to right, rgba(0,0,0,1) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0,0,0,1) 2px, transparent 2px);
+  mask-image: 
+    linear-gradient(to right, rgba(0,0,0,1) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0,0,0,1) 2px, transparent 2px);
+  -webkit-mask-size: 40px 40px;
+  mask-size: 40px 40px;
+  
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 0.3s;
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.6));
+}
+
+.dark .cursor-grid-light {
+  background-image: 
+    radial-gradient(
+      circle 250px at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(167, 139, 250, 0.9) 0%,    /* violet-400 */
+      rgba(129, 140, 248, 0.6) 25%,   /* indigo-400 */
+      rgba(96, 165, 250, 0.3) 45%,    /* blue-400 */
+      transparent 100%
+    );
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6));
+}

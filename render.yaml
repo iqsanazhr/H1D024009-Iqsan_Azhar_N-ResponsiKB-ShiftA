@@ -1,0 +1,19 @@
+services:
+  # Service 1: Sistem Pakar Motor
+  - type: web
+    name: backend-pakar-motor
+    env: python
+    rootDir: Backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn SistemPakar:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: API_NINJAS_KEY
+        value: wlnNsFLveQ60wkEXDILrD8aAqMrEZW4nFpdV9Hoh # Diambil dari .env sebelumnya
+
+  # Service 2: Sistem Rekomendasi Fuzzy
+  - type: web
+    name: backend-fuzzy-tani
+    env: python
+    rootDir: Backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn Fuzzy:app --host 0.0.0.0 --port $PORT
