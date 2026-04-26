@@ -1,16 +1,76 @@
-# React + Vite
+# Responsi Praktikum Kecerdasan Buatan - Shift A
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Nama:** IQSAN AZHAR N  
+**NIM:** H1D024009  
+**Shift:** A  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Penjelasan Program: MotorCare AI & AgriFuzzy
 
-## React Compiler
+Program ini adalah platform kecerdasan buatan berbasis web yang mengintegrasikan dua sistem cerdas utama untuk membantu pengguna dalam bidang mekanik kendaraan bermotor dan optimasi pertanian.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Sistem Pakar Diagnosa Motor (Forward Chaining)
+Sistem ini dirancang untuk mendeteksi kerusakan pada sepeda motor (khususnya merek Honda, Yamaha, dan Suzuki) berdasarkan gejala-gejala yang dialami.
+- **Teknologi:** Menggunakan algoritma **Forward Chaining** untuk mencocokkan fakta (gejala) dengan aturan (knowledge base).
+- **Integrasi API:** Terhubung dengan **API Ninjas** untuk mengambil spesifikasi teknis motor secara *real-time* (kapasitas mesin, tipe transmisi, pendingin, dll).
+- **Fitur:** 
+    - Pencarian model motor otomatis.
+    - Deteksi otomatis tipe transmisi (CVT/Manual) untuk menyesuaikan daftar gejala.
+    - Output diagnosis berupa nama kerusakan, solusi perbaikan, estimasi biaya, dan tingkat kepercayaan (*confidence level*).
 
-## Expanding the ESLint configuration
+### 2. Sistem Rekomendasi Pertanian (Logika Fuzzy)
+Sistem ini memberikan saran aktivitas pertanian yang optimal berdasarkan kondisi lingkungan terkini.
+- **Teknologi:** Menggunakan **Logika Fuzzy (Mamdani/Sugeno)** melalui library `scikit-fuzzy`.
+- **Input:** Suhu udara, Kelembaban, dan Peluang Hujan.
+- **Fitur:**
+    - Integrasi peta interaktif (**Leaflet**) untuk menentukan lokasi.
+    - Pengambilan data cuaca *real-time* (opsional/simulasi) berdasarkan koordinat.
+    - Output berupa skor rekomendasi aktivitas (Sangat Disarankan, Disarankan, atau Tidak Disarankan).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Stack Teknologi
+
+**Backend:**
+- **FastAPI:** Framework Python modern untuk performa tinggi.
+- **Scikit-Fuzzy:** Untuk pemrosesan logika fuzzy.
+- **Pydantic:** Validasi data dan skema API.
+- **Requests:** Komunikasi dengan API eksternal (API Ninjas).
+
+**Frontend:**
+- **React.js + Vite:** Library UI yang cepat dan responsif.
+- **TailwindCSS:** Styling dengan konsep *Bento Box UI* yang modern dan premium.
+- **Lucide React:** Icon set yang konsisten dan elegan.
+- **React Leaflet:** Integrasi peta interaktif.
+
+---
+
+## 📦 Instalasi Lokal
+
+1. **Clone Repository:**
+   ```bash
+   git clone https://github.com/iqsanazhr/H1D024009-Iqsan_Azhar_N-ResponsiKB-ShiftA.git
+   cd H1D024009-Iqsan_Azhar_N-ResponsiKB-ShiftA
+   ```
+
+2. **Backend Setup:**
+   ```bash
+   pip install -r requirements.txt
+   # Jalankan server
+   uvicorn api.index:app --reload
+   ```
+
+3. **Frontend Setup:**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+---
+
+## 🌐 Deployment
+Aplikasi ini dikonfigurasi untuk **Vercel Serverless Functions**. Semua endpoint backend dipetakan secara otomatis melalui file `vercel.json` ke direktori `api/`.
+
+---
+*Tugas ini disusun untuk memenuhi syarat Responsi Praktikum Kecerdasan Buatan 2024.*
