@@ -3,12 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 
-# Load env variables (API_NINJAS_KEY, dll)
-load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Frontend', '.env'))
+# Load env variables (API_NINJAS_KEY, dll) dari root folder
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
-# Import aplikasi FastAPI dari Backend
-from Backend.SistemPakar import app as pakar_app
-from Backend.Fuzzy import app as fuzzy_app
+# Import aplikasi FastAPI dari api
+from api.SistemPakar import app as pakar_app
+from api.Fuzzy import app as fuzzy_app
 
 app = FastAPI(title="Asistensi Unified API untuk Vercel")
 
